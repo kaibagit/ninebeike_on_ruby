@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @courier.username %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @courier.name %>
+</p>
+
+
+<%= link_to (t 'Edit'), edit_courier_path(@courier) %> |
+<%= link_to (t 'Back'), couriers_path %>

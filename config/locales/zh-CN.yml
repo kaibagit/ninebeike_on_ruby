@@ -99,6 +99,7 @@ zh-CN:
       models:
         user: "用户"
         carousel: "首页轮播"
+        courier: 上门人员
       attributes:
         user:
           name: "名字"
@@ -107,6 +108,11 @@ zh-CN:
         carousel:
           image: "图片"
           link: "链接"
+        courier:
+          username: 用户名
+          name: 姓名
+          password: 密码
+          password_confirmation: 确认密码
   errors:
     format: "%{attribute}%{message}"
     messages:

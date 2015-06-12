@@ -1,3 +1,6 @@
+require 'fileutils'
+require 'uuidtools'
+
 class CarouselsController < ApplicationController
   before_action :set_carousel, only: [:show, :edit, :update, :destroy]
 
@@ -24,7 +27,13 @@ class CarouselsController < ApplicationController
   # POST /carousels
   # POST /carousels.json
   def create
+    tmp = params[:carousel][:image_file]
+    image_file_name = UUIDTools::UUID.timestamp_create().to_s.gsub('-','') + File.extname(tmp.original_filename)
+    target_file = File.join("public","upload","common", image_file_name)
+    FileUtils.cp tmp.path, target_file
+
     @carousel = Carousel.new(carousel_params)
+    @carousel.image = "/upload/common/"+image_file_name
 
     respond_to do |format|
       if @carousel.save

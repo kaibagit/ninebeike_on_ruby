@@ -12,11 +12,11 @@
   <tbody>
     <% @carousels.each do |carousel| %>
       <tr>
-        <td><%= carousel.image %></td>
-        <td><%= carousel.ulr %></td>
+        <td><a href="<%= carousel.image %>" target="_blank"><image src="<%= carousel.image %>" style="max-width: 100px;"/></a></td>
+        <td><a href="<%= carousel.ulr %>" target="_blank"><%= carousel.ulr %></a></td>
         <td><%= link_to (t 'Show'), carousel %></td>
         <td><%= link_to (t 'Edit'), edit_carousel_path(carousel) %></td>
-        <td><%= link_to (t 'Destroy'), carousel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to (t 'Destroy'), carousel, method: :delete, data: { confirm: '确定删除吗' } %></td>
       </tr>
     <% end %>
   </tbody>

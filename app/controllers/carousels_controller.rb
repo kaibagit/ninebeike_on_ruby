@@ -27,13 +27,8 @@ class CarouselsController < ApplicationController
   # POST /carousels
   # POST /carousels.json
   def create
-    tmp = params[:carousel][:image_file]
-    image_file_name = UUIDTools::UUID.timestamp_create().to_s.gsub('-','') + File.extname(tmp.original_filename)
-    target_file = File.join("public","upload","common", image_file_name)
-    FileUtils.cp tmp.path, target_file
-
     @carousel = Carousel.new(carousel_params)
-    @carousel.image = "/upload/common/"+image_file_name
+    upload_image
 
     respond_to do |format|
       if @carousel.save
@@ -49,8 +44,10 @@ class CarouselsController < ApplicationController
   # PATCH/PUT /carousels/1
   # PATCH/PUT /carousels/1.json
   def update
+  	upload_image
+  	
     respond_to do |format|
-      if @carousel.update(carousel_params)
+      if @carousel.update_attributes(carousel_params)
         format.html { redirect_to @carousel, notice: 'Carousel was successfully updated.' }
         format.json { render :show, status: :ok, location: @carousel }
       else
@@ -79,5 +76,15 @@ class CarouselsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def carousel_params
       params.require(:carousel).permit(:image, :ulr)
+    end
+    
+    def upload_image
+    	tmp = params[:carousel][:image_file]
+		unless tmp.nil?
+			image_file_name = UUIDTools::UUID.timestamp_create().to_s.gsub('-','') + File.extname(tmp.original_filename)
+			target_file = File.join("public","upload","common", image_file_name)
+			FileUtils.cp tmp.path, target_file
+			@carousel.image = "/upload/common/"+image_file_name
+		end
     end
 end

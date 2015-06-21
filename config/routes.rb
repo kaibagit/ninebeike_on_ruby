@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+	mount API, at: '/'
+
   resources :couriers
 
   resources :carousels

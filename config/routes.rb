@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :members
+
 	mount API, at: '/'
 
   resources :couriers

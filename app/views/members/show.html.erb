@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @member.mobile %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @member.points %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

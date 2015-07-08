@@ -1,7 +1,7 @@
 class Member < ActiveRecord::Base
 
 	def self.send_vericode_to(mobile)
-		logger.info("mobile => #{mobile}")
+		SmsCerManager.send_vericode_to mobile
 	end
 
 	def self.login(mobile,vericode)

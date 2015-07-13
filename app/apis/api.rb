@@ -25,7 +25,20 @@ class API < Grape::API
 		post :login do
 			mobile = params[:mobile]
 			vericode = params[:vericode]
-
+			login_result = Member.login(mobile,vericode)
+			res = ApiRes.new
+			if login_result.code == LoginResult.SuccessCode
+				member = login_result.member
+				res.data = {
+					:id		=> member.id,
+					:mobile	=> member.mobile,
+					:token		=> login_result.token
+				}
+			elsif login_result.code == LoginResult.VerifyFailCode
+				res.code = ApiResCode::MemberCode.VerifyFail
+			else
+				raise 'not define login code'
+			end
 		end
 
 		post :logout do

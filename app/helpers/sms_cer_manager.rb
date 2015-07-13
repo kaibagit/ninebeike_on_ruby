@@ -7,5 +7,10 @@ module SmsCerManager
 		$redis_sms.expire(mobile,300)
 	end
 
+	def self.veriy(mobile,vericode)
+		existed_vericode = $redis_sms.get(mobile)
+		vericode == existed_vericode
+	end
+	
 
 end

@@ -5,6 +5,10 @@ class API < Grape::API
 	version 'v1', using: :header, vendor: 'Unirole'
 	format :json
 	prefix 'api'
+
+	rescue_from :all do |e|
+    	error!({:code => 0,:message => e.message})
+  	end
 	
 	resource 'carousels' do
 		get do
@@ -41,7 +45,7 @@ class API < Grape::API
 			end
 		end
 
-		post :logout do
+		get :logout do
 		end
 	end
 

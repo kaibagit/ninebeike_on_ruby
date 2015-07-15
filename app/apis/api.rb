@@ -7,7 +7,7 @@ class API < Grape::API
 	prefix 'api'
 
 	rescue_from :all do |e|
-    	error!({:code => 0,:message => e.message})
+    	error!({:code => ApiResCode::CommonCode.ServerError,:message => e.message})
   	end
 	
 	resource 'carousels' do

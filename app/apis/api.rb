@@ -6,8 +6,17 @@ class API < Grape::API
 	format :json
 	prefix 'api'
 
+	helpers do
+	    def authenticate!
+	    	auth_token = cookies['auth-token']
+	    	@current_member_id = MemberTokenManager.current_member_id(auth_token)
+	    	error!({:code => ApiResCode::MemberCode::InvalidToken}) unless @current_member_id
+	    end
+	end
+
 	rescue_from :all do |e|
-    	error!({:code => ApiResCode::CommonCode.ServerError,:message => e.message})
+		Rails.logger.error e
+    	error!({:code => ApiResCode::CommonCode::ServerError,:message => e.message})
   	end
 	
 	resource 'carousels' do
@@ -46,6 +55,7 @@ class API < Grape::API
 		end
 
 		get :logout do
+			authenticate!
 		end
 	end
 

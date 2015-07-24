@@ -1,6 +1,6 @@
 require 'api_res'
 
-class API < Grape::API
+class NineBeikeAPI < Grape::API
 	puts "API is running"
 	version 'v1', using: :header, vendor: 'Unirole'
 	format :json

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :members
 
-	mount API, at: '/'
+	mount NineBeikeAPI, at: '/'
 
   resources :couriers
 

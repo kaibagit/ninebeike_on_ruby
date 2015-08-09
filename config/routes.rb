@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :points_changed_records
+
+  resources :deals
+
   resources :members
 
 	mount NineBeikeAPI, at: '/'

@@ -1,0 +1,31 @@
+<h1>Listing points_changed_records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mid</th>
+      <th>Changed before</th>
+      <th>Chaged points</th>
+      <th>Changed after</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @points_changed_records.each do |points_changed_record| %>
+      <tr>
+        <td><%= points_changed_record.mid %></td>
+        <td><%= points_changed_record.changed_before %></td>
+        <td><%= points_changed_record.chaged_points %></td>
+        <td><%= points_changed_record.changed_after %></td>
+        <td><%= link_to 'Show', points_changed_record %></td>
+        <td><%= link_to 'Edit', edit_points_changed_record_path(points_changed_record) %></td>
+        <td><%= link_to 'Destroy', points_changed_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Points changed record', new_points_changed_record_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mid:</strong>
+  <%= @points_changed_record.mid %>
+</p>
+
+<p>
+  <strong>Changed before:</strong>
+  <%= @points_changed_record.changed_before %>
+</p>
+
+<p>
+  <strong>Chaged points:</strong>
+  <%= @points_changed_record.chaged_points %>
+</p>
+
+<p>
+  <strong>Changed after:</strong>
+  <%= @points_changed_record.changed_after %>
+</p>
+
+<%= link_to 'Edit', edit_points_changed_record_path(@points_changed_record) %> |
+<%= link_to 'Back', points_changed_records_path %>

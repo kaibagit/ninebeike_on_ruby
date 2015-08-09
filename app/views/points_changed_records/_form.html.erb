@@ -1,0 +1,33 @@
+<%= form_for(@points_changed_record) do |f| %>
+  <% if @points_changed_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@points_changed_record.errors.count, "error") %> prohibited this points_changed_record from being saved:</h2>
+
+      <ul>
+      <% @points_changed_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mid %><br>
+    <%= f.number_field :mid %>
+  </div>
+  <div class="field">
+    <%= f.label :changed_before %><br>
+    <%= f.number_field :changed_before %>
+  </div>
+  <div class="field">
+    <%= f.label :chaged_points %><br>
+    <%= f.number_field :chaged_points %>
+  </div>
+  <div class="field">
+    <%= f.label :changed_after %><br>
+    <%= f.number_field :changed_after %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

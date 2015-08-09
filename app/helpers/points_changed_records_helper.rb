@@ -1,0 +1,2 @@
+module PointsChangedRecordsHelper
+end

@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+	
+	has_many:points_changed_records,:foreign_key => "mid"
 
 	def self.send_vericode_to(mobile)
 		SmsCerManager.send_vericode_to mobile
@@ -25,5 +27,8 @@ class Member < ActiveRecord::Base
 		end
 		login_result
 	end
-
+	
+	def change_points(title,changed_points)
+		
+	end
 end

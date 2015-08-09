@@ -49,4 +49,4 @@ gem 'rspec-rails',	group: [:development,:test]
 gem 'capybara', 	group: :test
 gem 'selenium-webdriver', group: :test
 
-
+gem 'unicorn'

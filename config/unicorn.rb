@@ -18,8 +18,8 @@ timeout 30
 
 pid "#{Rails.root}/tmp/pids/unicorn.pid"
 
-#stderr_path "#{Rails.root}/log/unicorn.log"
-#stdout_path "#{Rails.root}/log/unicorn.log"
+stderr_path "#{Rails.root}/log/unicorn.stderr.log"    #错误日志的位置，自己设置，注意权限
+stdout_path "#{Rails.root}/log/unicorn.stdout.log"    #输出日志的位置，自己设置，注意权限
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow

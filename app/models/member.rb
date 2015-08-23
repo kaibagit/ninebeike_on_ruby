@@ -15,15 +15,16 @@ class Member < ActiveRecord::Base
 				member.mobile = mobile
 				member.points = 0
 				member.save
+				Publisher.publish("new_member",member.attributes)
 			end
 			token = MemberTokenManager.create_or_recreate_token(member.id)
 			login_result = LoginResult.new
-			login_result.code = LoginResult.SuccessCode
+			login_result.code = LoginResult::SuccessCode
 			login_result.member = member
 			login_result.token = token
 		else
 			login_result = LoginResult.new
-			login_result.code = login_result.VerifyFailCode
+			login_result.code = login_result::VerifyFailCode
 		end
 		login_result
 	end

@@ -44,6 +44,8 @@ gem 'uuidtools'
 gem 'grape'
 
 gem 'redis'
+gem 'bunny'
+gem 'sneakers'
 
 #test
 gem 'rspec-rails',	group: [:development,:test]
